@@ -91,6 +91,12 @@ exports.start_raw_server = (opts) ->
             if kucalc.IN_KUCALC
                 # Add a /health handler, which is used as a health check for Kubernetes.
                 kucalc.init_health_metrics(raw_server, project_id)
+                
+            # Setup health and metrics (no url base prefix needed)
+            raw_server.use '/health', (req, res) ->
+                res.setHeader("Content-Type", "text/plain")
+                res.setHeader('Cache-Control', 'private, no-cache, no-store, must-revalidate')
+                res.send('OK')
 
             # Setup the /.smc/directory_listing/... server, which is used to provide directory listings
             # to the hub (at least in KuCalc).
