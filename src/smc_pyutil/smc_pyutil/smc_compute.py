@@ -661,9 +661,11 @@ spec:
         limits:
           cpu: "{cores}"
           memory: "{memory}Mi"
+          ephemeral-storage: "4Gi"
         requests:
           cpu: {cpu_shares}m
           memory: 500Mi
+          ephemeral-storage: "2Gi"
       volumeMounts:
         - name: home
           mountPath: /home/user
