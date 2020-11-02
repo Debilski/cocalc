@@ -664,7 +664,7 @@ spec:
           ephemeral-storage: "4Gi"
         requests:
           cpu: {cpu_shares}m
-          memory: 500Mi
+          memory: 800Mi
           ephemeral-storage: "2Gi"
       volumeMounts:
         - name: home
@@ -681,7 +681,7 @@ spec:
             nfs_server_ip=nfs_server_ip,
             registry=KUBERNETES_REGISTRY,
             cores=max(1, cores),
-            memory=max(1000, memory),
+            memory=max(4000, memory),
             cpu_shares=max(
                 50, cpu_shares
             ),  # TODO: this must be less than cores or won't start, but UI doesn't restrict that
